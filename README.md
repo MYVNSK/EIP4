@@ -1,7 +1,7 @@
 # EIP4
 EIP online (Wednesday Batch)
 
-Contributors: Mamidi Y V N Sandeep Kumar & Ch Veeranjaneyulu
+Contributor: Mamidi Y V N Sandeep Kumar 
 
 Score: [0.04119752720832262, 0.9911]
 
