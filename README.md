@@ -105,3 +105,46 @@ Epoch 00020: LearningRateScheduler setting learning rate to 0.000424869.
 
 Test Score
 [0.018612720821413676, 0.9941]
+
+Assignment3:
+
+1. Base Model : Validation Accuracy: 83.13%
+2. Modified Model: Validation Accuracy: 83.58%  (40th Epoch)
+Model:
+model = Sequential()
+model.add(SeparableConv2D(32, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same', input_shape=(32, 32, 3))) 
+# Output: 32 * 32 * 32 and RF: 3
+model.add(BatchNormalization())
+model.add(SeparableConv2D(64, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
+# Output: 32*32*64 and RF: 5
+model.add(BatchNormalization())
+model.add(MaxPooling2D((2, 2)))
+# Output: 16*16*64 and RF: 6
+model.add(Dropout(0.25))
+model.add(SeparableConv2D(96, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
+# Output: 16*16*96 and RF: 10
+model.add(BatchNormalization())
+model.add(SeparableConv2D(96, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
+# Ouptut: 16*16*96 and RF:14
+model.add(BatchNormalization())
+model.add(MaxPooling2D((2, 2)))
+# Ouput: 8*8*96 and RF: 16
+model.add(Dropout(0.25))
+model.add(SeparableConv2D(108, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
+# Output: 8*8*108 and RF: 24
+model.add(BatchNormalization())
+model.add(SeparableConv2D(108, (3, 3), activation='relu', kernel_initializer='he_uniform', padding='same'))
+# Output: 8*8*108 and RF: 32
+model.add(BatchNormalization())
+model.add(MaxPooling2D((2, 2)))
+# Output: 4*4*108 and RF: 36
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(30, activation='relu', kernel_initializer='he_uniform'))
+model.add(BatchNormalization())
+model.add(Dropout(0.25))
+model.add(Dense(num_classes, activation='softmax'))
+# compile model
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+
